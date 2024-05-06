@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "260286155660",
+    "firebase_url": "https://proyectofinal-3bd67-default-rtdb.firebaseio.com",
+    "project_id": "proyectofinal-3bd67",
+    "storage_bucket": "proyectofinal-3bd67.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:260286155660:android:6679f08c6ca639d31b64a9",
+        "android_client_info": {
+          "package_name": "com.esteban.aplicacion_final"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfRBa0dpyd1_YogNlbOpLfHM5gadJOAzo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
