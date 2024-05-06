@@ -2,31 +2,26 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:gravity="center">
 
-    <!-- Botón "Punto de Venta" en la parte superior derecha -->
-    <Button
-        android:id="@+id/buttonLoginAlmacen"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/editTextNombreAlmacen"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:text="Punto de Venta" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="64dp"
+        android:hint="Nombre del Almacen" />
 
-
-
-    <!-- Campo de correo electrónico -->
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/buttonLoginAlmacen"
+        android:layout_below="@id/editTextNombreAlmacen"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:hint="Correo electrónico"
         android:inputType="textEmailAddress" />
 
-    <!-- Campo de contraseña -->
     <EditText
         android:id="@+id/editTextContraseña"
         android:layout_width="match_parent"
@@ -37,24 +32,32 @@
         android:hint="Contraseña"
         android:inputType="textPassword" />
 
-    <!-- Botón "Iniciar Sesión" -->
     <Button
         android:id="@+id/buttonIniciarSesion"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextContraseña"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:text="Iniciar Sesión" />
 
-    <!-- Botón "Registro" -->
-    <Button
-        android:id="@+id/buttonRegistro"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textViewIniciarSesion"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/buttonIniciarSesion"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:text="¿No tienes una cuenta? Regístrate" />
+        android:text="¿No tienes una cuenta?"
+        android:textColor="@android:color/black" />
+
+    <Button
+        android:id="@+id/buttonRegistrarNuevoAlmacen"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewIniciarSesion"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Registrar Almacén" />
 
 </RelativeLayout>

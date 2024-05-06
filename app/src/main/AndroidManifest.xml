@@ -14,6 +14,7 @@
         android:theme="@style/Theme.Aplicacion_final"
         tools:targetApi="31">
 
+        <!-- Actividad de Pantalla de Carga -->
         <activity
             android:name=".pantalla_carga"
             android:exported="true">
@@ -23,25 +24,29 @@
             </intent-filter>
         </activity>
 
-        <!-- RegistroActivity -->
-        <activity
-            android:name=".RegistroActivity"
-            android:exported="true">
-        </activity>
-
-        <!-- LoginActivity -->
         <activity
             android:name=".LoginActivity">
+
         </activity>
 
-        <!-- MainActivity -->
+        <!-- Actividad de Registro de Almacén -->
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:name=".RegistroActivity" >
+        </activity>
+
+        <!-- Actividad de Inicio de Sesión (Almacen) -->
+        <activity
+            android:name=".LoginAlmacenActivity">
+        </activity>
+
+        <!-- Actividad de Registro de Almacén -->
+        <activity
+            android:name=".RegistroAlmacenActivity">
+        </activity>
+
+        <!-- Actividad Principal -->
+        <activity
+            android:name=".MainActivity">
         </activity>
 
     </application>
