@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:gravity="center"
+    android:background="@color/azul">
 
     <!-- Botón "Punto de Venta" en la parte superior derecha -->
     <Button
@@ -11,7 +12,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:text="Punto de Venta" />
+        android:text="Punto de Venta"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/rojo"/>
 
 
 
@@ -23,8 +27,12 @@
         android:layout_below="@id/buttonLoginAlmacen"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:hint="Correo electrónico"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"/>
 
     <!-- Campo de contraseña -->
     <EditText
@@ -34,8 +42,12 @@
         android:layout_below="@id/editTextEmail"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:hint="Contraseña"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"/>
 
     <!-- Botón "Iniciar Sesión" -->
     <Button
@@ -45,7 +57,12 @@
         android:layout_below="@id/editTextContraseña"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:text="Iniciar Sesión" />
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:text="Iniciar Sesión"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/rojo"/>
 
     <!-- Botón "Registro" -->
     <Button
@@ -55,6 +72,11 @@
         android:layout_below="@id/buttonIniciarSesion"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:text="¿No tienes una cuenta? Regístrate" />
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:text="¿No tienes una cuenta? Regístrate"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/rojo"/>
 
 </RelativeLayout>

@@ -2,15 +2,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="@color/azul">
 
     <EditText
         android:id="@+id/editTextNombreAlmacen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="64dp"
-        android:hint="Nombre del Almacen" />
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:hint="Nombre del Almacen"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"/>
 
     <EditText
         android:id="@+id/editTextEmail"
@@ -19,8 +23,12 @@
         android:layout_below="@id/editTextNombreAlmacen"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:hint="Correo electrónico"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"/>
 
     <EditText
         android:id="@+id/editTextContraseña"
@@ -29,8 +37,12 @@
         android:layout_below="@id/editTextEmail"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:hint="Contraseña"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"/>
 
     <Button
         android:id="@+id/buttonIniciarSesion"
@@ -39,7 +51,10 @@
         android:layout_below="@id/editTextContraseña"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
-        android:text="Iniciar Sesión" />
+        android:text="Iniciar Sesión"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/rojo"/>
 
     <TextView
         android:id="@+id/textViewIniciarSesion"
@@ -47,9 +62,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/buttonIniciarSesion"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="25dp"
         android:text="¿No tienes una cuenta?"
-        android:textColor="@android:color/black" />
+        android:textColor="@color/naranja"
+        android:textStyle="bold"
+        android:textSize="15dp"/>
 
     <Button
         android:id="@+id/buttonRegistrarNuevoAlmacen"
@@ -57,7 +74,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewIniciarSesion"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:text="Registrar Almacén" />
+        android:layout_marginTop="7dp"
+        android:text="Registrar Almacén"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/rojo"/>
 
 </RelativeLayout>
