@@ -1,4 +1,4 @@
-package com.esteban.aplicacion_final;
+package com.esteban.aplicacion_final.usuario;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.esteban.aplicacion_final.almacen.LoginAlmacenActivity;
+import com.esteban.aplicacion_final.R;
+import com.esteban.aplicacion_final.models.Usuario;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -17,7 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginUsuarioActivity extends AppCompatActivity {
 
     private EditText etEmail, etContraseña;
     private Button btnIniciarSesion, btnRegistrarse, btnLoginAlmacen; // Añade el botón para login en el almacén
@@ -27,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login_usuario);
 
         // Inicializa Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -81,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
                             // Redirige al usuario a la actividad principal
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(getApplicationContext(), "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            startActivity(new Intent(LoginUsuarioActivity.this, MainActivityUsuario.class));
                             finish(); // Cierra la actividad de inicio de sesión para evitar que el usuario vuelva atrás
                             return;
                         } else {
@@ -104,10 +108,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void abrirRegistro() {
-        startActivity(new Intent(LoginActivity.this, RegistroActivity.class));
+        startActivity(new Intent(LoginUsuarioActivity.this, RegistroUsuarioActivity.class));
     }
 
     private void abrirLoginAlmacen() {
-        startActivity(new Intent(LoginActivity.this, LoginAlmacenActivity.class));
+        startActivity(new Intent(LoginUsuarioActivity.this, LoginAlmacenActivity.class));
     }
 }

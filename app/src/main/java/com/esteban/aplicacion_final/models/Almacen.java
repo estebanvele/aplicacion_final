@@ -1,17 +1,27 @@
-package com.esteban.aplicacion_final;
+package com.esteban.aplicacion_final.models;
 
 
-public class Usuario {
+public class Almacen {
+    private String nombre;
     private String email;
     private String contraseña;
 
-    public Usuario() {
+    public Almacen() {
         // Constructor vacío requerido para Firebase
     }
 
-    public Usuario(String email, String contraseña) {
+    public Almacen(String nombre, String email, String contraseña) {
+        this.nombre = nombre;
         this.email = email;
         this.contraseña = contraseña;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getEmail() {
@@ -29,4 +39,5 @@ public class Usuario {
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
+
 }

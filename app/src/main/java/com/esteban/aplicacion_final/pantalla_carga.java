@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.esteban.aplicacion_final.usuario.LoginUsuarioActivity;
+
 public class pantalla_carga extends AppCompatActivity {
 
     @Override
@@ -16,7 +18,7 @@ public class pantalla_carga extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(pantalla_carga.this,LoginActivity.class));
+                startActivity(new Intent(pantalla_carga.this, LoginUsuarioActivity.class));
                 finish();
             }
         },5000);

@@ -1,4 +1,4 @@
-package com.esteban.aplicacion_final;
+package com.esteban.aplicacion_final.almacen;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.esteban.aplicacion_final.R;
+import com.esteban.aplicacion_final.models.Almacen;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -16,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class LoginAlmacenActivity extends AppCompatActivity {
 
-    private EditText etEmail, etContraseña;
+    private EditText etEmail, etContraseña, etNombre;
     private Button btnIniciarSesion, btnRegistrarNuevoAlmacen;
     private DatabaseReference mDatabase;
 
@@ -29,6 +32,7 @@ public class LoginAlmacenActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         // Vincula las vistas
+        etNombre = findViewById(R.id.editTextNombreAlmacen);
         etEmail = findViewById(R.id.editTextEmail);
         etContraseña = findViewById(R.id.editTextContraseña);
         btnIniciarSesion = findViewById(R.id.buttonIniciarSesion);
@@ -42,6 +46,7 @@ public class LoginAlmacenActivity extends AppCompatActivity {
     }
 
     private void verificarInformacionAlmacen() {
+        String nombre = etNombre.getText().toString();
         String email = etEmail.getText().toString().trim();
         String contraseña = etContraseña.getText().toString().trim();
 
@@ -57,7 +62,7 @@ public class LoginAlmacenActivity extends AppCompatActivity {
             return;
         }
 
-        // Consulta la información del almacén en Firebase Realtime Database
+        // Consulta la información del almacén en Firebase
         mDatabase.child("almacenes").orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -69,7 +74,10 @@ public class LoginAlmacenActivity extends AppCompatActivity {
                             // Contraseña correcta, permitir acceso al almacén
                             Toast.makeText(getApplicationContext(), "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
                             // Redirige al usuario a MainActivityAlmacen
-                            Intent intent = new Intent(LoginAlmacenActivity.this, MainActivityAlmacen.class);
+                            Intent intent = new Intent(LoginAlmacenActivity.this, MainActivityAlmacen.class)
+                                    .putExtra("email", email)
+                                    .putExtra("contraseña", contraseña)
+                                    .putExtra("nombre", nombre);
                             startActivity(intent);
                             finish(); // Cierra la actividad de inicio de sesión del almacén
                             return;

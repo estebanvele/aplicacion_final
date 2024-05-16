@@ -1,4 +1,4 @@
-package com.esteban.aplicacion_final;
+package com.esteban.aplicacion_final.usuario;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,10 +8,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.esteban.aplicacion_final.R;
+import com.esteban.aplicacion_final.models.Usuario;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class RegistroActivity extends AppCompatActivity {
+public class RegistroUsuarioActivity extends AppCompatActivity {
 
     private EditText etEmail, etContraseña;
     private Button btnRegistrar;
@@ -20,7 +23,7 @@ public class RegistroActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registro);
+        setContentView(R.layout.activity_registro_usuario);
 
         // Inicializa la referencia de la base de datos
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -52,12 +55,12 @@ public class RegistroActivity extends AppCompatActivity {
 
         // Guarda la información del usuario en Firebase Realtime Database
         Usuario usuario = new Usuario(email, contraseña);
-        mDatabase.child("usuarios").child(email.replace(".", ",")).setValue(usuario)
+        mDatabase.child("usuarios").child(email.replace(",", ".")).setValue(usuario)
                 .addOnSuccessListener(aVoid -> {
                     // El usuario se registró exitosamente
                     Toast.makeText(getApplicationContext(), "Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
                     // Abre la actividad de inicio de sesión
-                    startActivity(new Intent(RegistroActivity.this, LoginActivity.class));
+                    startActivity(new Intent(RegistroUsuarioActivity.this, LoginUsuarioActivity.class));
                     finish(); // Cierra la actividad de registro
                 })
                 .addOnFailureListener(e -> {
