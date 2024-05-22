@@ -32,6 +32,7 @@
         <activity android:name=".almacen.RegistroAlmacenActivity"></activity> <!-- Actividad Principal -->
         <activity android:name=".usuario.MainActivityUsuario"></activity>
         <activity android:name=".almacen.MainActivityAlmacen"></activity>
+
     </application>
 
 </manifest>
