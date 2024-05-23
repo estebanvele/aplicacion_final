@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="@color/azul">
+    android:background="@color/azul"
+    android:orientation="vertical">
+
+
+
 
     <EditText
         android:id="@+id/editTextNombreAlmacen"
@@ -79,5 +85,20 @@
         android:textSize="16sp"
         android:textStyle="bold"
         android:backgroundTint="@color/rojo"/>
+
+    <Button
+        android:id="@+id/buttonLoginUsuario"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonRegistrarNuevoAlmacen"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="104dp"
+        android:backgroundTint="@color/rojo"
+        android:text="Usuarios"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

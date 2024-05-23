@@ -14,9 +14,11 @@
         android:theme="@style/Theme.Aplicacion_final"
         tools:targetApi="31">
         <activity
-            android:name=".producto.CrearProducto"
+            android:name=".almacen.VerMisProductosActivity"
             android:exported="false" />
-        <!-- Actividad de Pantalla de Carga -->
+        <activity
+            android:name=".producto.CrearProducto"
+            android:exported="false" /> <!-- Actividad de Pantalla de Carga -->
         <activity
             android:name=".pantalla_carga"
             android:exported="true">
@@ -26,13 +28,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".usuario.LoginUsuarioActivity"></activity> <!-- Actividad de Registro de Almacén -->
-        <activity android:name=".usuario.RegistroUsuarioActivity"></activity> <!-- Actividad de Inicio de Sesión (Almacen) -->
-        <activity android:name=".almacen.LoginAlmacenActivity"></activity> <!-- Actividad de Registro de Almacén -->
-        <activity android:name=".almacen.RegistroAlmacenActivity"></activity> <!-- Actividad Principal -->
-        <activity android:name=".usuario.MainActivityUsuario"></activity>
-        <activity android:name=".almacen.MainActivityAlmacen"></activity>
-
+        <activity
+            android:name=".usuario.LoginUsuarioActivity"
+            android:noHistory="true" /> <!-- Actividad de Registro de Almacén -->
+        <activity android:name=".usuario.RegistroUsuarioActivity" /> <!-- Actividad de Inicio de Sesión (Almacen) -->
+        <activity
+            android:name=".almacen.LoginAlmacenActivity"
+            android:noHistory="true" /> <!-- Actividad de Registro de Almacén -->
+        <activity android:name=".almacen.RegistroAlmacenActivity" /> <!-- Actividad Principal -->
+        <activity android:name=".usuario.MainActivityUsuario" />
+        <activity android:name=".almacen.MainActivityAlmacen" />
     </application>
 
 </manifest>

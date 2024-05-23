@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.esteban.aplicacion_final.R;
 import com.esteban.aplicacion_final.models.Almacen;
+import com.esteban.aplicacion_final.usuario.LoginUsuarioActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 public class LoginAlmacenActivity extends AppCompatActivity {
 
     private EditText etEmail, etContraseña, etNombre;
-    private Button btnIniciarSesion, btnRegistrarNuevoAlmacen;
+    private Button btnIniciarSesion, btnRegistrarNuevoAlmacen, btnLoginUsuario;
     private DatabaseReference mDatabase;
 
     @Override
@@ -37,12 +38,14 @@ public class LoginAlmacenActivity extends AppCompatActivity {
         etContraseña = findViewById(R.id.editTextContraseña);
         btnIniciarSesion = findViewById(R.id.buttonIniciarSesion);
         btnRegistrarNuevoAlmacen = findViewById(R.id.buttonRegistrarNuevoAlmacen);
+        btnLoginUsuario = findViewById(R.id.buttonLoginUsuario);
 
         // Configura el clic del botón de inicio de sesión
         btnIniciarSesion.setOnClickListener(view -> verificarInformacionAlmacen());
 
         // Configura el clic del botón para registrar un nuevo almacén
         btnRegistrarNuevoAlmacen.setOnClickListener(view -> abrirRegistroAlmacen());
+        btnLoginUsuario.setOnClickListener(view -> abrirLoginUsuario());
     }
 
     private void verificarInformacionAlmacen() {
@@ -103,5 +106,9 @@ public class LoginAlmacenActivity extends AppCompatActivity {
     private void abrirRegistroAlmacen() {
         // Abre la actividad de registro de un nuevo almacén
         startActivity(new Intent(LoginAlmacenActivity.this, RegistroAlmacenActivity.class));
+    }
+
+    private void abrirLoginUsuario() {
+        startActivity(new Intent(getApplicationContext(), LoginUsuarioActivity.class));
     }
 }
