@@ -4,40 +4,70 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="10dp"
+    android:background="@color/azul">
 
-    <TextView
-        android:id="@+id/nombre_producto"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp"/>
+        android:animateLayoutChanges="true"
+        android:orientation="vertical"
+        android:background="@drawable/style_borde">
+        <TextView
+            android:id="@+id/nombre_producto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:text="name"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/maroon"/>
 
-    <TextView
-        android:id="@+id/descripcion_producto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:layout_marginBottom="8dp"/>
+        <TextView
+            android:id="@+id/descripcion_producto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="8dp"
+            android:text="descripcion"
+            android:textSize="17sp"
+            android:textColor="@color/black"/>
 
-    <TextView
-        android:id="@+id/precio_producto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:layout_marginBottom="8dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/precio_producto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:text="price"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="25dp"
+                android:textColor="@color/azul"/>
 
-    <TextView
-        android:id="@+id/cantidad_producto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/cantidad_producto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="200dp"
+                android:layout_marginEnd="10dp"
+                android:text="cantidad"
+                android:textSize="17sp"
+                android:textColor="@color/black"/>
+        </LinearLayout>
 
-    <!-- Agregar botón de Comprar -->
-    <Button
-        android:id="@+id/btn_comprar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Comprar"/>
+        <!-- Agregar botón de Comprar -->
+        <Button
+            android:id="@+id/btn_comprar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginBottom="15dp"
+            android:backgroundTint="@color/rojo"
+            android:text="Comprar"/>
+    </LinearLayout>
+
 </LinearLayout>
