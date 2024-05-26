@@ -1,14 +1,22 @@
-<!-- activity_main_usuario.xml -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <EditText
+        android:id="@+id/edit_text_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Buscar por letra..."
+        android:inputType="text"
+        android:imeOptions="actionDone"
+        android:layout_alignParentTop="true"
+        android:layout_margin="8dp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-
-
+        android:layout_height="match_parent"
+        android:layout_below="@id/edit_text_search"
+        android:layout_marginTop="8dp" />
 
 </RelativeLayout>
