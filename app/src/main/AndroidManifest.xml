@@ -38,6 +38,10 @@
         <activity android:name=".almacen.RegistroAlmacenActivity" /> <!-- Actividad Principal -->
         <activity android:name=".usuario.MainActivityUsuario" />
         <activity android:name=".almacen.MainActivityAlmacen" />
+
+
+
+
     </application>
 
 </manifest>

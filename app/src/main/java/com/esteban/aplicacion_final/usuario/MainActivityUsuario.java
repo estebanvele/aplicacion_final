@@ -66,7 +66,6 @@ public class MainActivityUsuario extends AppCompatActivity implements VerProduct
     // Método para manejar el clic en un producto
     @Override
     public void onItemClick(Producto producto) {
-        // Aquí puedes implementar la lógica para realizar la compra
         Toast.makeText(this, "Producto comprado: " + producto.getNombre(), Toast.LENGTH_SHORT).show();
     }
 }

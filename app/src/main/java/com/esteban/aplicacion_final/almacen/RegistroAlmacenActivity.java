@@ -1,5 +1,6 @@
 package com.esteban.aplicacion_final.almacen;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
@@ -21,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 public class RegistroAlmacenActivity extends AppCompatActivity {
 
     private EditText etNombreAlmacen, etEmail, etContraseña;
-    private Button btnRegistrarAlmacen;
+    private Button btnRegistrarAlmacen, btnIrALogin;
 
     private DatabaseReference mDatabase;
 
@@ -38,9 +39,13 @@ public class RegistroAlmacenActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.editTextEmail);
         etContraseña = findViewById(R.id.editTextContraseña);
         btnRegistrarAlmacen = findViewById(R.id.buttonRegistrarAlmacen);
+        btnIrALogin = findViewById(R.id.buttonIrALogin);
 
         // Configuración del clic del botón de registro de almacén
         btnRegistrarAlmacen.setOnClickListener(view -> registrarAlmacen());
+
+        // Configuración del clic del botón para ir a la actividad de login
+        btnIrALogin.setOnClickListener(view -> abrirLoginAlmacen());
     }
 
     private void registrarAlmacen() {
@@ -57,7 +62,6 @@ public class RegistroAlmacenActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Por favor, ingresa un email válido", Toast.LENGTH_SHORT).show();
             return;
         }
-
 
         // Crear una instancia de Almacen con los datos proporcionados
         Almacen almacen = new Almacen(nombreAlmacen, email, contraseña);
@@ -83,17 +87,22 @@ public class RegistroAlmacenActivity extends AppCompatActivity {
                                 // Error al guardar el almacén
                                 Toast.makeText(getApplicationContext(), "Error al registrar el almacén: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                             });
-                } else if (dataSnapshot.exists()){
+                } else if (dataSnapshot.exists()) {
                     Toast.makeText(getApplicationContext(), "Ya existe una cuenta con este email", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                // Error al realizar la consulta
+                Toast.makeText(getApplicationContext(), "Error al registrar el almacén: " + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
 
-
+    private void abrirLoginAlmacen() {
+        // Abre la actividad de login de almacén
+        Intent intent = new Intent(RegistroAlmacenActivity.this, LoginAlmacenActivity.class);
+        startActivity(intent);
     }
 }

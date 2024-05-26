@@ -126,7 +126,10 @@
                     android:text="Ver"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
+
+
             </LinearLayout>
+
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
