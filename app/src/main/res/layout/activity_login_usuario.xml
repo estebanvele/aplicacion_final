@@ -1,30 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:orientation="vertical"
     android:background="@color/azul">
 
-    <!-- Botón "Punto de Venta" en la parte superior derecha -->
-    <Button
-        android:id="@+id/buttonLoginAlmacen"
-        android:layout_width="wrap_content"
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:text="Punto de Venta"
-        android:textSize="16sp"
+        android:textSize="50sp"
+        android:text="Iniciar Sesión Usuario"
+        android:gravity="center"
+        android:textColor="@color/white"
         android:textStyle="bold"
-        android:backgroundTint="@color/rojo"/>
-
-
-
+        android:layout_marginBottom="30dp"
+        />
     <!-- Campo de correo electrónico -->
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/buttonLoginAlmacen"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:layout_marginStart="20dp"
@@ -39,8 +35,6 @@
         android:id="@+id/editTextContraseña"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextEmail"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
@@ -54,8 +48,6 @@
         android:id="@+id/buttonIniciarSesion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextContraseña"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
@@ -64,19 +56,47 @@
         android:textStyle="bold"
         android:backgroundTint="@color/rojo"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="¿No tienes una cuenta?"
+        android:textColor="@color/naranja"
+        android:textStyle="bold"
+        android:textSize="15dp"/>
     <!-- Botón "Registro" -->
     <Button
         android:id="@+id/buttonRegistro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/buttonIniciarSesion"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
-        android:text="¿No tienes una cuenta? Regístrate"
+        android:text="Regístrate como Usuario"
         android:textSize="18sp"
         android:textStyle="bold"
         android:backgroundTint="@color/rojo"/>
 
-</RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="¿Eres vendedor?"
+        android:textColor="@color/naranja"
+        android:textStyle="bold"
+        android:textSize="15dp"/>
+    <!-- Boton Registrar Almacen -->
+    <Button
+        android:id="@+id/buttonLoginAlmacen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrate como Punto de Venta"
+        android:layout_marginTop="8dp"
+
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/rojo"/>
+
+</LinearLayout>

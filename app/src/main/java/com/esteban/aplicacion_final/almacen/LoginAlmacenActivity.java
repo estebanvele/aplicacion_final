@@ -20,8 +20,9 @@ import com.google.firebase.database.ValueEventListener;
 
 public class LoginAlmacenActivity extends AppCompatActivity {
 
-    private EditText etEmail, etContraseña, etNombre;
+    private EditText etEmail, etContraseña;
     private Button btnIniciarSesion, btnRegistrarNuevoAlmacen, btnLoginUsuario;
+    private String almacenKey;
     private DatabaseReference mDatabase;
 
     @Override
@@ -30,10 +31,9 @@ public class LoginAlmacenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login_almacen);
 
         // Inicializa la referencia de la base de datos
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference("almacenes");
 
         // Vincula las vistas
-        etNombre = findViewById(R.id.editTextNombreAlmacen);
         etEmail = findViewById(R.id.editTextEmail);
         etContraseña = findViewById(R.id.editTextContraseña);
         btnIniciarSesion = findViewById(R.id.buttonIniciarSesion);
@@ -49,7 +49,6 @@ public class LoginAlmacenActivity extends AppCompatActivity {
     }
 
     private void verificarInformacionAlmacen() {
-        String nombre = etNombre.getText().toString();
         String email = etEmail.getText().toString().trim();
         String contraseña = etContraseña.getText().toString().trim();
 
@@ -66,7 +65,7 @@ public class LoginAlmacenActivity extends AppCompatActivity {
         }
 
         // Consulta la información del almacén en Firebase
-        mDatabase.child("almacenes").orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabase.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -78,9 +77,9 @@ public class LoginAlmacenActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
                             // Redirige al usuario a MainActivityAlmacen
                             Intent intent = new Intent(LoginAlmacenActivity.this, MainActivityAlmacen.class)
-                                    .putExtra("email", email)
-                                    .putExtra("contraseña", contraseña)
-                                    .putExtra("nombre", nombre);
+                                    .putExtra("email", almacen.getEmail())
+                                    .putExtra("contraseña", almacen.getContraseña())
+                                    .putExtra("nombre", almacen.getNombre());
                             startActivity(intent);
                             finish(); // Cierra la actividad de inicio de sesión del almacén
                             return;

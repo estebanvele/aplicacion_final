@@ -16,9 +16,10 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegistroUsuarioActivity extends AppCompatActivity {
 
-    private EditText etEmail, etContraseña;
-    private Button btnRegistrar;
+    private EditText etEmail, etContraseña, etNombre;
+    private Button btnRegistrar, btnIrLoginUsuario;
     private DatabaseReference mDatabase;
+    private String usuarioKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,20 +27,26 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registro_usuario);
 
         // Inicializa la referencia de la base de datos
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference("usuarios");
+        usuarioKey = mDatabase.push().getKey();
 
         // Vincula las vistas
+        etNombre = findViewById(R.id.editTextNombre);
         etEmail = findViewById(R.id.editTextEmail);
         etContraseña = findViewById(R.id.editTextContraseña);
         btnRegistrar = findViewById(R.id.buttonRegistrar);
+        btnIrLoginUsuario = findViewById(R.id.irLoginUsuario);
+
 
         // Configura el clic del botón de registro
         btnRegistrar.setOnClickListener(view -> registrarUsuario());
+        btnIrLoginUsuario.setOnClickListener(view -> irLoginUsuario());
     }
 
     private void registrarUsuario() {
         String email = etEmail.getText().toString().trim();
         String contraseña = etContraseña.getText().toString().trim();
+        String nombre = etNombre.getText().toString().trim();
 
         // Valida que los campos no estén vacíos
         if (TextUtils.isEmpty(email) || TextUtils.isEmpty(contraseña)) {
@@ -54,18 +61,22 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
         }
 
         // Guarda la información del usuario en Firebase Realtime Database
-        Usuario usuario = new Usuario(email, contraseña);
-        mDatabase.child("usuarios").child(email.replace(",", ".")).setValue(usuario)
+        Usuario usuario = new Usuario(nombre ,email, contraseña, usuarioKey);
+        mDatabase.child(usuarioKey).setValue(usuario)
                 .addOnSuccessListener(aVoid -> {
                     // El usuario se registró exitosamente
                     Toast.makeText(getApplicationContext(), "Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
                     // Abre la actividad de inicio de sesión
-                    startActivity(new Intent(RegistroUsuarioActivity.this, LoginUsuarioActivity.class));
+                    startActivity(new Intent(getApplicationContext(), LoginUsuarioActivity.class));
                     finish(); // Cierra la actividad de registro
                 })
                 .addOnFailureListener(e -> {
                     // Hubo un error al registrar el usuario
                     Toast.makeText(getApplicationContext(), "Error al registrar usuario: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
+    }
+
+    public void irLoginUsuario() {
+        startActivity(new Intent(getApplicationContext(), LoginUsuarioActivity.class));
     }
 }

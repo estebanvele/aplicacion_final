@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">aplicacion_final</string>
-    <string name="correo_electr_nico">Correo electrónico</string>
+    <string name="correo_electronico">Correo electronico</string>
     <string name="contrase_a">Contraseña</string>
     <string name="registrar">Registrar</string>
 </resources>

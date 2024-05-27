@@ -5,15 +5,25 @@ public class Almacen {
     private String nombre;
     private String email;
     private String contraseña;
+    private String almacenId;
 
     public Almacen() {
         // Constructor vacío requerido para Firebase
     }
 
-    public Almacen(String nombre, String email, String contraseña) {
+    public Almacen(String almacenId, String nombre, String email, String contraseña) {
+        this.almacenId = almacenId;
         this.nombre = nombre;
         this.email = email;
         this.contraseña = contraseña;
+    }
+
+    public String getAlmacenId() {
+        return almacenId;
+    }
+
+    public void setAlmacenId(String almacenId) {
+        this.almacenId = almacenId;
     }
 
     public String getNombre() {

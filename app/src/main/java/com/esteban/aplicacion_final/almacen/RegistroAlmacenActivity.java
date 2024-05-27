@@ -24,6 +24,7 @@ public class RegistroAlmacenActivity extends AppCompatActivity {
     private EditText etNombreAlmacen, etEmail, etContraseña;
     private Button btnRegistrarAlmacen, btnIrALogin;
 
+    private String almacenKey;
     private DatabaseReference mDatabase;
 
     @Override
@@ -32,14 +33,15 @@ public class RegistroAlmacenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registro_almacen);
 
         // Inicialización de Firebase Database
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference("almacenes");
+        almacenKey = mDatabase.push().getKey();
 
         // Vinculación de vistas
         etNombreAlmacen = findViewById(R.id.editTextNombreAlmacen);
         etEmail = findViewById(R.id.editTextEmail);
         etContraseña = findViewById(R.id.editTextContraseña);
         btnRegistrarAlmacen = findViewById(R.id.buttonRegistrarAlmacen);
-        btnIrALogin = findViewById(R.id.buttonIrALogin);
+        btnIrALogin = findViewById(R.id.buttonIrALoginAlmacen);
 
         // Configuración del clic del botón de registro de almacén
         btnRegistrarAlmacen.setOnClickListener(view -> registrarAlmacen());
@@ -64,7 +66,7 @@ public class RegistroAlmacenActivity extends AppCompatActivity {
         }
 
         // Crear una instancia de Almacen con los datos proporcionados
-        Almacen almacen = new Almacen(nombreAlmacen, email, contraseña);
+        Almacen almacen = new Almacen(almacenKey, nombreAlmacen, email, contraseña);
 
         // Obtener una referencia a la ubicación en la base de datos para este almacén
         DatabaseReference refAlmacen = mDatabase.child("almacenes");
@@ -73,15 +75,14 @@ public class RegistroAlmacenActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (!dataSnapshot.exists()) {
-                    // Generar una nueva clave única para este almacén
-                    String almacenId = refAlmacen.push().getKey();
 
                     // Guardar el almacén utilizando la clave generada
-                    refAlmacen.child(almacenId).setValue(almacen)
+                    mDatabase.child(almacenKey).setValue(almacen)
                             .addOnSuccessListener(aVoid -> {
                                 // Éxito al guardar el almacén
                                 Toast.makeText(getApplicationContext(), "Almacén registrado correctamente", Toast.LENGTH_SHORT).show();
                                 // Aquí puedes realizar cualquier acción adicional después de guardar el almacén, como redirigir al usuario a otra actividad
+                                startActivity(new Intent(getApplicationContext(), LoginAlmacenActivity.class));
                             })
                             .addOnFailureListener(e -> {
                                 // Error al guardar el almacén

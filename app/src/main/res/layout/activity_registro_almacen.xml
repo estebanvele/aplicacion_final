@@ -1,70 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:background="@color/azul">
-
-    <EditText
-        android:id="@+id/editTextNombreAlmacen"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nombre del Almacén"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:inputType="text"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"/>
-
-    <EditText
-        android:id="@+id/editTextEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editTextNombreAlmacen"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:hint="Correo electrónico"
-        android:inputType="textEmailAddress"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"/>
-
-    <EditText
-        android:id="@+id/editTextContraseña"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editTextEmail"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"/>
+    android:background="@color/azul"
+    android:orientation="vertical"
+    android:padding="10dp">
 
     <Button
-        android:id="@+id/buttonRegistrarAlmacen"
-        android:layout_width="match_parent"
+        android:id="@+id/buttonIrALoginAlmacen"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextContraseña"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:text="Registrar Nuevo Almacén"
+        android:layout_gravity="end"
+        android:text="Volver"
         android:textSize="18sp"
         android:textStyle="bold"
         android:backgroundTint="@color/rojo"/>
 
-    <Button
-        android:id="@+id/buttonIrALogin"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/buttonRegistrarAlmacen"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:text="Ir a Login"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:backgroundTint="@color/rojo"/>
-</RelativeLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="50sp"
+            android:text="Registro Almacen"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_marginBottom="30dp"
+            />
+        <EditText
+            android:id="@+id/editTextNombreAlmacen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre del Almacén"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:inputType="text"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"/>
+
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editTextNombreAlmacen"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:hint="Correo electrónico"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"/>
+
+        <EditText
+            android:id="@+id/editTextContraseña"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editTextEmail"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"/>
+
+        <Button
+            android:id="@+id/buttonRegistrarAlmacen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editTextContraseña"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:text="Registrar Nuevo Almacén"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:backgroundTint="@color/rojo"/>
+    </LinearLayout>
+
+
+</LinearLayout>

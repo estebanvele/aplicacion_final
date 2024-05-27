@@ -24,8 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 public class LoginUsuarioActivity extends AppCompatActivity {
 
     private EditText etEmail, etContraseña;
-    private Button btnIniciarSesion, btnRegistrarse, btnLoginAlmacen; // Añade el botón para login en el almacén
-    private FirebaseAuth mAuth;
+    private Button btnIniciarSesion, btnRegistrarse, btnLoginAlmacen;
     private DatabaseReference mDatabase;
 
     @Override
@@ -33,11 +32,8 @@ public class LoginUsuarioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_usuario);
 
-        // Inicializa Firebase Auth
-        mAuth = FirebaseAuth.getInstance();
-
         // Inicializa la referencia de la base de datos
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference("usuarios");
 
         // Vincula las vistas
         etEmail = findViewById(R.id.editTextEmail);
@@ -73,7 +69,7 @@ public class LoginUsuarioActivity extends AppCompatActivity {
         }
 
         // Verifica las credenciales con la información almacenada en Firebase
-        mDatabase.child("usuarios").orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabase.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -83,7 +79,6 @@ public class LoginUsuarioActivity extends AppCompatActivity {
                         if (usuario.getContraseña().equals(contraseña)) {
                             // Contraseña correcta, inicia sesión
                             // Redirige al usuario a la actividad principal
-                            FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(getApplicationContext(), "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(LoginUsuarioActivity.this, MainActivityUsuario.class));
                             finish(); // Cierra la actividad de inicio de sesión para evitar que el usuario vuelva atrás
