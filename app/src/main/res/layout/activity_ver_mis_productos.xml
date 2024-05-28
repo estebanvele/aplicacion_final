@@ -1,7 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/azul"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:background="@color/naranja">
+        <TextView
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Mis Productos"
+            android:textSize="35sp"
+            android:textColor="@color/maroon"
+            android:textStyle="bold"
+            android:background="@color/naranja"
+            android:layout_weight="4"/>
+        <Button
+            android:id="@+id/btnSalirMainAlmacen"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Salir"
+            android:backgroundTint="@color/rojo"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/almacen_recycler_view"
@@ -11,4 +38,4 @@
 
 
 
-</RelativeLayout>
+</LinearLayout>

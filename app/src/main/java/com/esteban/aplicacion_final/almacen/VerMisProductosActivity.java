@@ -1,6 +1,8 @@
 package com.esteban.aplicacion_final.almacen;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -26,12 +28,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VerMisProductosActivity extends AppCompatActivity{
-
+    private String nombreAlmacen;
     private RecyclerView recyclerView;
     private VerMisProductosAdapter verMisProductosAdapter;
     private List<Producto> productList;
-
     private DatabaseReference mDatabase;
+    private Button btnSalirMainAlmacen;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +49,14 @@ public class VerMisProductosActivity extends AppCompatActivity{
         verMisProductosAdapter = new VerMisProductosAdapter(getApplicationContext(), productList);
         recyclerView.setAdapter(verMisProductosAdapter);
 
-        String nombreAlmacen = getIntent().getStringExtra("nombreAlmacen");
+        nombreAlmacen = getIntent().getStringExtra("nombreAlmacen");
 
         Toast.makeText(getApplicationContext(), nombreAlmacen, Toast.LENGTH_LONG).show();
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        btnSalirMainAlmacen = findViewById(R.id.btnSalirMainAlmacen);
+        btnSalirMainAlmacen.setOnClickListener(view -> salirMainAlmacen());
 
         mDatabase.child("productos").orderByChild("nombreAlmacen").equalTo(nombreAlmacen).addValueEventListener(new ValueEventListener() {
             @Override
@@ -68,6 +74,10 @@ public class VerMisProductosActivity extends AppCompatActivity{
                 Toast.makeText(getApplicationContext(), "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
+    }
+    public void salirMainAlmacen(){
+        startActivity(new Intent(getApplicationContext(), MainActivityAlmacen.class).putExtra("nombre", nombreAlmacen));
 
     }
 }

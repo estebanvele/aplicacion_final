@@ -17,7 +17,7 @@
            android:id="@+id/titulo"
            android:layout_width="match_parent"
            android:layout_height="match_parent"
-           android:textSize="35sp"
+           android:textSize="50sp"
            android:textStyle="bold"
            android:text="Dash Board"
            android:textColor="@color/naranja"

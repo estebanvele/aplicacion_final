@@ -1,5 +1,6 @@
 package com.esteban.aplicacion_final.producto;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +15,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.esteban.aplicacion_final.R;
+import com.esteban.aplicacion_final.almacen.MainActivityAlmacen;
 import com.esteban.aplicacion_final.models.Producto;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,7 +27,7 @@ public class CrearProducto extends AppCompatActivity {
 
     private String nombreAlmacen;
     private EditText nombreEt, descripcionEt, precioEt, cantidadEt, nombreAlmacenEt;
-    private Button crear_productoBtn;
+    private Button crear_productoBtn, btnCancel;
     private DatabaseReference mDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +48,12 @@ public class CrearProducto extends AppCompatActivity {
         precioEt = findViewById(R.id.precio);
         cantidadEt = findViewById(R.id.cantidad);
         crear_productoBtn = findViewById(R.id.crear_producto);
+        btnCancel = findViewById(R.id.btnCancel);
         nombreAlmacenEt = findViewById(R.id.nombreAlmacen);
         nombreAlmacen = getIntent().getStringExtra("nombre");
         nombreAlmacenEt.setText(nombreAlmacen);
 
+        btnCancel.setOnClickListener(view -> cancelarProducto());
         crear_productoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,5 +104,8 @@ public class CrearProducto extends AppCompatActivity {
 
             }
         });
+    }
+    public void cancelarProducto(){
+        startActivity(new Intent(getApplicationContext(), MainActivityAlmacen.class).putExtra("nombre", nombreAlmacen));
     }
 }

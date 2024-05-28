@@ -1,8 +1,10 @@
 package com.esteban.aplicacion_final.usuario;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -29,6 +31,8 @@ public class MainActivityUsuario extends AppCompatActivity implements VerProduct
     private List<Producto> productList;
     private DatabaseReference mDatabase;
     private EditText editTextSearch;
+    private Button btnSalirUsuario;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,9 @@ public class MainActivityUsuario extends AppCompatActivity implements VerProduct
         verProductosAdapter.setOnItemClickListener(this); // Establecer el listener de clic en el adaptador
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("productos");
+
+        btnSalirUsuario = findViewById(R.id.btnSalirUsuario);
+        btnSalirUsuario.setOnClickListener(view -> salirUsuario());
 
         // Referencia al EditText de búsqueda
         editTextSearch = findViewById(R.id.edit_text_search);
@@ -66,6 +73,10 @@ public class MainActivityUsuario extends AppCompatActivity implements VerProduct
 
         // Cargar todos los productos
         loadProducts();
+    }
+
+    public void salirUsuario(){
+        startActivity(new Intent(getApplicationContext(), LoginUsuarioActivity.class));
     }
 
     // Método para cargar todos los productos desde Firebase

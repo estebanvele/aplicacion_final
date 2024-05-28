@@ -90,7 +90,7 @@
         android:id="@+id/buttonLoginAlmacen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Registrate como Punto de Venta"
+        android:text="Registrate como Almacen"
         android:layout_marginTop="8dp"
 
         android:layout_marginStart="40dp"
